@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                             aaClour.notifyDataSetChanged();
                             etElement.setText(null);
                             etIndexElement.setText(null);
-                            Toast.makeText(MainActivity.this, "Successfully removed clour in index "+etIndexElement.getText().toString(),
+                            Toast.makeText(MainActivity.this, "Successfully removed colour",
                                     Toast.LENGTH_SHORT).show();
                         }
                         else{
@@ -83,6 +83,32 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(MainActivity.this, "There is no colour to remove", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(alColours.size()>0){
+                    if(etIndexElement.getText().toString().length()>0 && etElement.getText().toString().length()>0){
+                        if(Integer.parseInt(etIndexElement.getText().toString())<alColours.size()){
+                            alColours.set(Integer.parseInt(etIndexElement.getText().toString()),etElement.getText().toString());
+                            aaClour.notifyDataSetChanged();
+                            etElement.setText(null);
+                            etIndexElement.setText(null);
+                            Toast.makeText(MainActivity.this, "Successfully updated colour",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this, "Index chosen is invalid", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this, "Please enter all values", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "There is no colour to update", Toast.LENGTH_SHORT).show();
                 }
             }
         });
